@@ -103,6 +103,31 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 4388971908229814017, guid: 678a8bc6eb6d93c4e8808cd2a1245440,
+        type: 3}
+      propertyPath: m_Drag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4388971908229814017, guid: 678a8bc6eb6d93c4e8808cd2a1245440,
+        type: 3}
+      propertyPath: m_Mass
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4388971908229814017, guid: 678a8bc6eb6d93c4e8808cd2a1245440,
+        type: 3}
+      propertyPath: m_UseGravity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4388971908229814017, guid: 678a8bc6eb6d93c4e8808cd2a1245440,
+        type: 3}
+      propertyPath: m_AngularDrag
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4388971908229814017, guid: 678a8bc6eb6d93c4e8808cd2a1245440,
+        type: 3}
+      propertyPath: m_ImplicitTensor
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4832736067730610289, guid: 678a8bc6eb6d93c4e8808cd2a1245440,
         type: 3}
       propertyPath: whole
@@ -131,7 +156,7 @@ PrefabInstance:
     - target: {fileID: 6751545629659383470, guid: 678a8bc6eb6d93c4e8808cd2a1245440,
         type: 3}
       propertyPath: m_IsTrigger
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6763009795871782562, guid: 678a8bc6eb6d93c4e8808cd2a1245440,
         type: 3}

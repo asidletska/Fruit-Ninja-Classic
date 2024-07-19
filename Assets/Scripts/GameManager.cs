@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public Text scoreText;
@@ -10,6 +11,8 @@ public class GameManager : MonoBehaviour
      private Blade blade;
      private Spawner spawner;
 
+    public int lives = 3;
+    public Canvas restartPanel;
     private void Awake()
     {
         blade = FindObjectOfType<Blade>();
@@ -26,10 +29,21 @@ public class GameManager : MonoBehaviour
 
         blade.enabled = true;
         spawner.enabled = true;
-
-        score = 0;
         scoreText.text = score.ToString();
 
+    }
+    public void Miss()
+    {
+        lives--;
+        if (lives > 0)
+        {
+            NewGame();
+            IncreaseScore(score);
+        }
+        else
+        {
+            SceneManager.LoadScene(3);
+        }
     }
     private void Clear()
     {
