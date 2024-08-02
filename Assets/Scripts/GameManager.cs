@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using UnityEngine.Events;
 public class GameManager : MonoBehaviour
 {
     public Text scoreText;
@@ -10,9 +11,9 @@ public class GameManager : MonoBehaviour
 
      private Blade blade;
      private Spawner spawner;
-
+    public UnityEvent bomb;
     public int lives = 3;
-    public Canvas restartPanel;
+
     private void Awake()
     {
         blade = FindObjectOfType<Blade>();
@@ -32,6 +33,7 @@ public class GameManager : MonoBehaviour
         scoreText.text = score.ToString();
 
     }
+
     public void Miss()
     {
         lives--;
@@ -42,6 +44,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
+            StartCoroutine(ExplodeSequence());
             SceneManager.LoadScene(3);
         }
     }
@@ -77,14 +80,13 @@ public class GameManager : MonoBehaviour
         
         blade.enabled = false;
         spawner.enabled = false;
-
         StartCoroutine(ExplodeSequence());
     }
     private IEnumerator ExplodeSequence()
     {
+        bomb.Invoke();
         float elapsed = 0f;
         float duration = 0.5f;
-
         while (elapsed < duration)
         {
             float t = Mathf.Clamp01(elapsed / duration);
@@ -95,7 +97,7 @@ public class GameManager : MonoBehaviour
 
             yield return null;
         }
-        yield return new WaitForSecondsRealtime(1f);
+        yield return new WaitForSecondsRealtime(2f);
         NewGame();
 
         elapsed = 0f;

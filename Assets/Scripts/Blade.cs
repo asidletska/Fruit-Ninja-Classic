@@ -1,10 +1,12 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Blade : MonoBehaviour
 {
     private Camera mainCamera;
     private  Collider bladeCollider;
     private bool slicing;
+    public UnityEvent Slicing;
     public Vector3 direction { get; private set; }
     public float sliceForce = 5f;
     public float minSliceVelocity = 0.01f;
@@ -38,6 +40,7 @@ public class Blade : MonoBehaviour
     }
     private void StartSlicing()
     {
+        Slicing.Invoke();
         Vector3 newPosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
         newPosition.z = 15f;
 
@@ -51,7 +54,7 @@ public class Blade : MonoBehaviour
         bladeCollider.enabled = false;
     }
     private void ContinueSlicing()
-    {
+    {        
         Vector3 newPosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
         newPosition.z = 0f;
 

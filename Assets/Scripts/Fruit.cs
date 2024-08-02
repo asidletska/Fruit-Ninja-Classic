@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Fruit : MonoBehaviour
 {
@@ -8,6 +9,8 @@ public class Fruit : MonoBehaviour
     private Rigidbody fruitRigidbody;
     private Collider fruitCollider;
     private ParticleSystem juiceParticalEffect;
+    public UnityEvent slised;
+
     public int points = 1;
     private void Awake()
     {
@@ -38,6 +41,7 @@ public class Fruit : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             Blade blade = other.GetComponent<Blade>();
+            slised.Invoke();
             Slice(blade.direction, blade.transform.position, blade.sliceForce);
         }
     }
