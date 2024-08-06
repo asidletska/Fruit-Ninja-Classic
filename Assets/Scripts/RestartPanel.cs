@@ -3,13 +3,15 @@ using UnityEngine;
 
 public class RestartPanel : MonoBehaviour
 {
+    public GameObject panelPause;
     public void PauseButtonPressed()
     {
-            SceneManager.LoadScene(4);
-            Time.timeScale = 1.0f;
+        Time.timeScale = 0f;
+        panelPause.SetActive(true);
     }
     public void ContinueHandler()
     {
+        panelPause.SetActive(false);
         Time.timeScale = 1.0f;
        
     }
