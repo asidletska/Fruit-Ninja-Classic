@@ -40,6 +40,7 @@ public class Blade : MonoBehaviour
     }
     private void StartSlicing()
     {
+        //SoundManager.instance.PlayFX(0);
         Slicing.Invoke();
         Vector3 newPosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
         newPosition.z = 15f;

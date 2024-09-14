@@ -44,8 +44,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            StartCoroutine(ExplodeSequence());
-            SceneManager.LoadScene(3);
+            StartCoroutine(GameOver()); 
         }
     }
     private void Clear()
@@ -67,13 +66,7 @@ public class GameManager : MonoBehaviour
     {
         score += points;
         scoreText.text = score.ToString();
-        float hiscore = PlayerPrefs.GetFloat("hiscore", 0);
 
-        if (score > hiscore)
-        {
-            hiscore = score;
-            PlayerPrefs.SetFloat("hiscore", hiscore);
-        }
     }
     public void Explode()
     {
@@ -111,5 +104,23 @@ public class GameManager : MonoBehaviour
             yield return null;
 
         }
+    }
+    private IEnumerator GameOver()
+    {
+        bomb.Invoke();
+        float elapsed = 0f;
+        float duration = 0.5f;
+        while (elapsed < duration)
+        {
+            float t = Mathf.Clamp01(elapsed / duration);
+            fadeImage.color = Color.Lerp(Color.clear, Color.white, t);
+
+            Time.timeScale = 1f - t;
+            elapsed += Time.unscaledDeltaTime;
+
+            yield return null;
+        }
+        yield return new WaitForSecondsRealtime(2f);
+        SceneManager.LoadScene(3);
     }
 }

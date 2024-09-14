@@ -148,6 +148,12 @@ PrefabInstance:
       propertyPath: sliced
       value: 
       objectReference: {fileID: 6631469066005104030}
+    - target: {fileID: 5590627879232954608, guid: 678a8bc6eb6d93c4e8808cd2a1245440,
+        type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: -3592016338157129646, guid: e80bcef6d224ac3469de2d476507e78d,
+        type: 2}
     - target: {fileID: 6128382966185809581, guid: 678a8bc6eb6d93c4e8808cd2a1245440,
         type: 3}
       propertyPath: m_IsActive
