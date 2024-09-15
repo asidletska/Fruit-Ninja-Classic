@@ -7,7 +7,6 @@ public class GameManager : MonoBehaviour
 {
     public Text scoreText;
     public Image fadeImage;
-    private int score;
 
      private Blade blade;
      private Spawner spawner;
@@ -30,7 +29,6 @@ public class GameManager : MonoBehaviour
 
         blade.enabled = true;
         spawner.enabled = true;
-        scoreText.text = score.ToString();
 
     }
 
@@ -40,7 +38,7 @@ public class GameManager : MonoBehaviour
         if (lives > 0)
         {
             NewGame();
-            IncreaseScore(score);
+
         }
         else
         {
@@ -62,12 +60,7 @@ public class GameManager : MonoBehaviour
             Destroy(bomb.gameObject);
         }
     }
-    public void IncreaseScore(int points)
-    {
-        score += points;
-        scoreText.text = score.ToString();
 
-    }
     public void Explode()
     {
         
@@ -120,6 +113,7 @@ public class GameManager : MonoBehaviour
 
             yield return null;
         }
+        Clear();
         yield return new WaitForSecondsRealtime(2f);
         SceneManager.LoadScene(3);
     }

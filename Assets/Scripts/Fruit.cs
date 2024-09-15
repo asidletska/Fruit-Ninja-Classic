@@ -20,7 +20,7 @@ public class Fruit : MonoBehaviour
     }
     private void Slice(Vector3 direction, Vector3 position, float force)
     {
-        FindObjectOfType<GameManager>().IncreaseScore(points);
+        FindObjectOfType<ScoreManager>().AddScore(points);
         whole.SetActive(false);
         sliced.SetActive(true);
         fruitCollider.enabled = false;
